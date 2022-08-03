@@ -55,7 +55,7 @@ fig1.update_layout(
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
-    width=700, height=350)
+    width=900, height=350)
 fig1.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig1)
@@ -83,7 +83,7 @@ fig2.update_layout(
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
-    width=700, height=350)
+    width=900, height=350)
 fig2.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig2)
