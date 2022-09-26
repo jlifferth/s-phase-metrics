@@ -9,13 +9,20 @@ import plotly.graph_objects as go
 st.title('S Phase BioFund Portfolio Performance')
 
 # update portfolio manually here
-portfolio = {'TXG': 9, 'ALLO': 36, 'GBIO': 78, 'IBB': 5, 'NKTR': 61, 'XBI': 3, 'SPY': 4}
+portfolio = {'TXG': 9, 'ALLO': 36, 'GBIO': 78, 'IBB': 5, 'NKTR': 61, 'XBI': 3, 'SPY': 4, 'ARVN': 10, 'MCRB': 198}
 securities = list(portfolio.keys())
 shares = list(portfolio.values())
 
 # Create all accounts df
 
-selected_period = '6mo'
+valid_periods = ('1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max')
+
+selected_period = st.selectbox(
+    'Select period to view',
+    valid_periods, index=valid_periods.index('6mo'))
+
+# st.write('You selected:', selected_period)
+
 portfolio_dfs = list()
 
 for security in list(portfolio.keys()):
@@ -98,7 +105,7 @@ references_returns_df = pd.DataFrame(references_returns, index=reference_stock_n
 
 # display table of portfolio returns
 portfolio_stocks = [all_accounts_df] + portfolio_dfs.copy()
-portfolio_stock_names = ['All Accounts', 'TXG', 'ALLO', 'GBIO', 'IBB', 'NKTR', 'XBI', 'SPY']
+portfolio_stock_names = ['All Accounts', 'TXG', 'ALLO', 'GBIO', 'IBB', 'NKTR', 'XBI', 'SPY', 'ARVN', 'MCRB']
 
 portfolio_returns = [round(((stock['Close'][-1] - stock['Close'][0]) / stock['Close'][0]) * 100, 1) for stock in
                      portfolio_stocks]
